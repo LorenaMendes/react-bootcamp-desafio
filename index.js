@@ -1,11 +1,11 @@
 var express = require("express");
 const app = express(); // cria uma cópia do módulo express inteiro
+var path = require('path');
+app.use(express.static(path.join(__dirname, '/public')));
 const handlebars = require('express-handlebars');
 const bodyParser = require('body-parser')
-const { Octokit } = require("@octokit/rest");
-const token = ""
-var api = require('./octokit');
 const { json } = require("body-parser");
+var api = require('./octokit');
 
 // Config
     // Template Engine
@@ -54,7 +54,8 @@ app.post('/detail', async function(req, res){
     const issues = {};
     for(var x in rawIssues.data)
         issues[rawIssues.data[x].title] = rawIssues.data[x].state
-    context['issues'] = issues;
+    if(Object.keys(issues).length != 0)
+        context['issues'] = issues;
 
     res.render('details', context);
 
