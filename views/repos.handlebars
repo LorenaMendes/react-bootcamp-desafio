@@ -1,0 +1,13 @@
+<h2>{{user}}'s repositories</h2>
+
+<form action="/detail" method="POST">
+    <select name="repo">
+        {{#each repos}}
+        <option>
+            {{this}}
+        </option>
+        {{/each}}
+    </select>
+    <input name="user" value="{{user}}" hidden/>
+    <button type="submit">Detail</button>
+</form>
