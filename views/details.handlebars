@@ -14,24 +14,25 @@
 {{/with}}
 
 {{#if issues}}
-<h3>Issues</h3>
-<table>
-    <thead>
-        <tr>
-            <th>Issue</th>
-            <th>Status</th>
-        </tr>
-    </thead>
-    <tbody>
-
-{{#each issues}}
-    {{#with this}}
-        <tr>
-            <td>{{@key}}</td>
-            <td>{{.}}</td>
-        </tr>
-    {{/with}}
-{{/each}}
-    </tbody>
-</table>
+    <h3>Issues</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Issue</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each issues}}
+                {{#with this}}
+                    <tr>
+                        <td>{{@key}}</td>
+                        <td>{{.}}</td>
+                    </tr>
+                {{/with}}
+            {{/each}}
+        </tbody>
+    </table>
+{{else}}
+<strong><p>No issues for this repo.</p></strong>
 {{/if}}

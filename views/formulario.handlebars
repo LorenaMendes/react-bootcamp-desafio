@@ -1,4 +1,10 @@
-<form action="/search" method="POST">
-    User: <input type="text" name="user"/>
-        <button type="submit">Search</button>
+<form class="form" action="/search" method="POST">
+    <p>Search for Github users to see their repositories.</p>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">@</span>
+            <input name="user" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+            <button type="submit">Search</button>
+        </div>
+    </div>
 </form>
