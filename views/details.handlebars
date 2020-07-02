@@ -1,6 +1,7 @@
 <form action="/">
 <button type="submit">Back to Home</button>
 </form>
+
 <h1>{{user}}</h1>
 <h2>Repository: {{repo}}</h2>
 <img src="{{pic}}" style="width: 10%;">
@@ -12,20 +13,25 @@
 <p><strong>URL: </strong><a href="{{url}}">{{url}}</a></p>
 {{/with}}
 
-{{#if openIssues}}
-<h3>Open Issues</h3>
-<div style="height:250px;width:450px;border:1px solid #4e4e4e;font:16px Arial, Serif;overflow:auto;">
-{{#each openIssues}}
-    <p>{{this}}</p>
-{{/each}}
-</div>
-{{/if}}
+{{#if issues}}
+<h3>Issues</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Issue</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
 
-{{#if closedIssues}}
-<h3>Closed Issues</h3>
-<div style="height:250px;width:450px;border:1px solid #4e4e4e;font:16px Arial, Serif;overflow:auto;">
-{{#each closedIssues}}
-    <p>{{this}}</p>
+{{#each issues}}
+    {{#with this}}
+        <tr>
+            <td>{{@key}}</td>
+            <td>{{.}}</td>
+        </tr>
+    {{/with}}
 {{/each}}
-</div>
+    </tbody>
+</table>
 {{/if}}
