@@ -5,6 +5,9 @@ const bodyParser = require('body-parser')
 const { Octokit } = require("@octokit/rest");
 const token = ""
 
+// import {getReposByUser} from './octokit';
+var api = require('./octokit');
+
 // Config
     // Template Engine
     app.engine('handlebars', handlebars({defaultLayout: 'main'}));
@@ -18,25 +21,9 @@ app.get('/', function(req, res){
     res.render('formulario');
 })
 
-app.post('/search', function(req, res){
-    var user = req.body.user;
-    // res.render('teste', {user: user});
-
-    const octokit = new Octokit({
-        auth: token,
-    });
-    octokit.repos
-        .listForUser({
-            username: user,
-        })
-        .then(({ data }) => {
-            // handle data
-            const repos = [];
-            for(var x in data){
-                repos.push(data[x]['name']);
-            }
-            res.render('repos', {repos: repos, user: user});
-        });
+app.post('/search', async function(req, res){
+    const repos = await api.getReposByUser(req.body.user);
+    res.render('repos', {repos: repos, user: user});
 })
 
 app.post('/detail', function(req, res){
