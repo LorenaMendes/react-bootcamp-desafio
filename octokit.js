@@ -1,5 +1,5 @@
 const { Octokit } = require("@octokit/rest");
-const token = 'b46e5267adc23f2a14cdc0ed70f7a1fe0aee21fb';
+const token = '';
 
 const octokit = new Octokit({auth: token});
 
