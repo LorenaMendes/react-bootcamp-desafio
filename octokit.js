@@ -6,11 +6,11 @@ const octokit = new Octokit({auth: token});
 module.exports = {
     getReposByUser: async function(user){
         const {data} = await octokit.repos.listForUser({username: user});
-        
-        const repos = [];
-        for(var x in data){
-            repos.push(data[x]['name']);
-        }
-        return repos;
-    }
+        return data;
+    },
+
+    getIssuesByRepo: async function(owner, repo){
+        const issues = await octokit.issues.listForRepo({owner: owner, repo: repo});
+        return issues;
+    },
 }
