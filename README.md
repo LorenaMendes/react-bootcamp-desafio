@@ -17,3 +17,6 @@ sudo apt install nodejs
 npm install @octokit/rest
 node index.js
 ```
+![](https://github.com/LorenaMendes/react-bootcamp-desafio/blob/master/public/img/page1.png)
+![](https://github.com/LorenaMendes/react-bootcamp-desafio/blob/master/public/img/page2.png)
+![](https://github.com/LorenaMendes/react-bootcamp-desafio/blob/master/public/img/page3.png)
