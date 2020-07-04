@@ -13,7 +13,7 @@ module.exports = {
     
     // Usa a API do github para retornar as issues por repositório e usuário
     getIssuesByRepo: async function(owner, repo){
-        const issues = await octokit.issues.listForRepo({owner: owner, repo: repo});
+        const issues = await octokit.paginate(octokit.issues.listForRepo({owner: owner, repo: repo}));
         return issues;
     },
 }
