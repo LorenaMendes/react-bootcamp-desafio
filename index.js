@@ -2,18 +2,18 @@ var express = require("express");
 const app = express(); // cria uma cópia do módulo express inteiro
 var path = require('path');
 app.use(express.static(path.join(__dirname, '/public')));
-// const handlebars = require('express-handlebars');
+const handlebars = require('express-handlebars');
 const bodyParser = require('body-parser')
 const { json } = require("body-parser");
 var api = require('./octokit');
 
 // Config
 // Template Engine
-    // app.engine('handlebars', handlebars({defaultLayout: 'main'}));
-    // app.set('view engine', 'handlebars'); // define quem vai ser a template engine
+    app.engine('handlebars', handlebars({defaultLayout: 'main'}));
+    app.set('view engine', 'handlebars'); // define quem vai ser a template engine
 
-    app.use(express.static(__dirname + '/client'));
-    const port = 8081;
+    // app.use(express.static(__dirname + '/client'));
+    // const port = 8081;
     
     // Body Parser
     app.use(bodyParser.urlencoded({extended: false}));
@@ -21,8 +21,8 @@ var api = require('./octokit');
 
 // Rotas
 app.get('/', function(req, res){
-    res.send('formulario');
-    // res.render('formulario');
+    // res.send('formulario');
+    res.render('formulario');
 })
 
 app.post('/search', async function(req, res){
@@ -34,8 +34,8 @@ app.post('/search', async function(req, res){
     for(var x in repos) repo_names.push(repos[x]['name']);
 
     // Renderiza a view repos.handlebars com os parâmetros passados no dicionário
-    res.send('repos');
-    // res.render('repos', {repos: repo_names, user: req.body.user});
+    // res.send('repos');
+    res.render('repos', {repos: repo_names, user: req.body.user});
 })
 
 app.post('/detail', async function(req, res){
@@ -64,8 +64,8 @@ app.post('/detail', async function(req, res){
         context['issues'] = issues;
     console.log(specificRepo);
 
-    res.send('details');
-    // res.render('details', context);
+    // res.send('details');
+    res.render('details', context);
 
 })
 
