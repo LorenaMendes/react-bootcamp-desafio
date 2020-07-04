@@ -16,6 +16,7 @@ As principais funcionalidades são:
 sudo apt install nodejs
 npm install @octokit/rest
 node index.js
+Acesso em http://localhost:8081
 ```
 ![](https://github.com/LorenaMendes/react-bootcamp-desafio/blob/master/public/img/page1.png)
 ![](https://github.com/LorenaMendes/react-bootcamp-desafio/blob/master/public/img/page2.png)
