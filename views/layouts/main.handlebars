@@ -4,6 +4,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Github API</title>
+        {{#each css}}
+            <link rel="stylesheet" href="css/{{this}}">
+        {{/each}}
+        {{!-- <link rel="stylesheet" href="../../public/css/style.css"> --}}
     </head>
     <body>
         {{{body}}}
